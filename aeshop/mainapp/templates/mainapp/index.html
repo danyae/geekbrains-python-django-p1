@@ -1,15 +1,27 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'mainapp/base.html' %} 
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Document</title>
-</head>
-
-<body>
+{% block content %}
     <h1>Hello world</h1>
-</body>
-
-</html>
+    <div class="products">
+        {% for product in products %}
+            <div class="product">
+                <div class="product-name">
+                    <a href="{% url 'product' pk=product.pk %}">{{ product.name }}</a>
+                </div>
+                <div>
+                    <a href="{% url 'product' pk=product.pk %}">
+                        <img src="{{ product.image.url }}" alt="{{ product.image.name }}">
+                    </a>
+                    </div>
+                <div class="product-bottom">
+                    <div class="price">
+                            {{ product.price }} 
+                    </div>
+                    <div class="product-action">
+                        <input class="btn-buy" type="button" value="КУПИТЬ">
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}
