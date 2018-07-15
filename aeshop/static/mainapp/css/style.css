@@ -1,3 +1,7 @@
+.producer-name {
+  text-align: center;
+}
+
 .products {
   display: flex;
   justify-content: space-around;

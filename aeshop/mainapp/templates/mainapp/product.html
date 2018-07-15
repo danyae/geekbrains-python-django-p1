@@ -15,4 +15,29 @@
             <img src="{{ product.image.url }}" alt="{{ product.image.name }}">
         </div>
     </div>
+    {% if other_products|length > 0 %}
+        <h3>Похожие продукты</h3>
+    {% endif %}
+    <div class="products">
+    {% for product in other_products %}
+        <div class="product">
+            <div class="product-name">
+                <a href="{% url 'product' pk=product.pk %}">{{ product.name }}</a>
+            </div>
+            <div>
+                <a href="{% url 'product' pk=product.pk %}">
+                    <img src="{{ product.image.url }}" alt="{{ product.image.name }}">
+                </a>
+            </div>
+            <div class="product-bottom">
+                <div class="price">
+                        {{ product.price }} 
+                </div>
+                <div class="product-action">
+                    <input class="btn-buy" type="button" value="КУПИТЬ">
+                </div>
+            </div>
+        </div>
+    {% endfor %}
+    </div>
 {% endblock %}

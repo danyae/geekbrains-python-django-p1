@@ -16,6 +16,7 @@ class Product(models.Model):
 
 class Producer(models.Model):
     name = models.CharField(max_length=200)
+    active = models.BooleanField()
 
     def __str__(self):
         return self.name
