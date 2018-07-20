@@ -1,5 +1,6 @@
-from django.shortcuts import render, get_object_or_404
+from django.shortcuts import render, get_object_or_404, redirect
 from .models import Product, Producer
+from .forms import ProductForm
 # Create your views here.
 
 
@@ -20,3 +21,14 @@ def product(request, pk):
         producer=product_obj.producer).exclude(pk=product_obj.pk)
     return render(request, 'mainapp/product.html', {'product': product_obj,
                                                     'other_products': producs_same_producer})
+
+
+def product_add(request):
+    if request.method == "POST":
+        form = ProductForm(request.POST, request.FILES)
+        if form.is_valid():
+            product = form.save()
+            return redirect('product', pk=product.pk)
+    else:
+        form = ProductForm()
+    return render(request, 'mainapp/product/add.html', {'form': form})
