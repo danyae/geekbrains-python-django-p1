@@ -10,10 +10,10 @@
         {% for product in products %}
             <div class="product">
                 <div class="product-name">
-                    <a href="{% url 'product' pk=product.pk %}">{{ product.name }}</a>
+                    <a href="{% url 'product_detail' pk=product.pk %}">{{ product.name }}</a>
                 </div>
                 <div>
-                    <a href="{% url 'product' pk=product.pk %}">
+                    <a href="{% url 'product_detail' pk=product.pk %}">
                         <img src="{{ product.image.url }}" alt="{{ product.image.name }}">
                     </a>
                 </div>

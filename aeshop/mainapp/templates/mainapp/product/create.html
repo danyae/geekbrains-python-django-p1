@@ -1,7 +1,7 @@
 {% extends 'mainapp/base.html' %} 
 
 {% block content %}
-    <h1>New product</h1>
+    <h1>New/Edit product</h1>
     <form method="POST" class="post-form" enctype="multipart/form-data">
         {% csrf_token %}
         {{ form.as_p }}

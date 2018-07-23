@@ -19,19 +19,19 @@
         <h3>Похожие продукты</h3>
     {% endif %}
     <div class="products">
-    {% for product in other_products %}
+    {% for promo_product in other_products %}
         <div class="product">
             <div class="product-name">
-                <a href="{% url 'product' pk=product.pk %}">{{ product.name }}</a>
+                <a href="{% url 'product_detail' pk=promo_product.pk %}">{{ promo_product.name }}</a>
             </div>
             <div>
-                <a href="{% url 'product' pk=product.pk %}">
-                    <img src="{{ product.image.url }}" alt="{{ product.image.name }}">
+                <a href="{% url 'product_detail' pk=promo_product.pk %}">
+                    <img src="{{ promo_product.image.url }}" alt="{{ promo_product.image.name }}">
                 </a>
             </div>
             <div class="product-bottom">
                 <div class="price">
-                        {{ product.price }} 
+                        {{ promo_product.price }} 
                 </div>
                 <div class="product-action">
                     <input class="btn-buy" type="button" value="КУПИТЬ">
